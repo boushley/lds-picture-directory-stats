@@ -17,3 +17,10 @@ func (h HouseholdSpecifics) HasHeadPicture() bool {
 func (h HouseholdSpecifics) HasSpousePicture() bool {
 	return h.HouseholdInfo.PhotoUrl != ""
 }
+
+func (h HouseholdSpecifics) GetEmails() (emails string) {
+	emails = h.HouseholdInfo.addEmail(emails)
+	emails = h.HeadOfHousehold.addEmail(emails)
+	emails = h.Spouse.addEmail(emails)
+	return
+}

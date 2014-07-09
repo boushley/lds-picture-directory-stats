@@ -69,13 +69,13 @@ func main() {
 			log.Fatal(err)
 		}
 		if !specifics.HasHouseholdPicture() {
-			log.Println("Missing picture for: ", h.CoupleName)
+			fmt.Printf("%s, %s\n", h.CoupleName, specifics.GetEmails())
 		} else {
 			found++
 		}
 	}
 
-	fmt.Printf("Missing: %d Checked: %d Found: %d Skipped: %d\n", (checked - found), checked, found, skipped)
+	fmt.Printf("Missing: %d Found: %d Checked: %d Skipped: %d\n", (checked - found), found, checked, skipped)
 }
 
 func readValue(prompt string) (result string) {
