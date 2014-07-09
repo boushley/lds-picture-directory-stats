@@ -3,8 +3,8 @@ package models
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
+	"strconv"
 )
 
 type Household struct {
@@ -13,12 +13,11 @@ type Household struct {
 	Spouse            Member   `json:"spouse"`
 	CoupleName        string   `json:"coupleName"`
 	HouseholdName     string   `json:"householdName"`
-	HeadOfHouseholdId int      `json:"headOfHouseholdIndividualId"`
+	HeadOfHouseholdId int64    `json:"headOfHouseIndividualId"`
 }
 
 func (h Household) FetchSpecifics(client *http.Client) (specifics HouseholdSpecifics, err error) {
-	householdUrl := "https://www.lds.org/directory/services/ludrs/mem/householdProfile/" + string(h.HeadOfHouseholdId)
-	log.Println("Requesting household from: ", householdUrl)
+	householdUrl := "https://www.lds.org/directory/services/ludrs/mem/householdProfile/" + strconv.FormatInt(h.HeadOfHouseholdId, 10)
 	resp, err := client.Get(householdUrl)
 	if err != nil {
 		return

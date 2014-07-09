@@ -21,3 +21,7 @@ _testmain.go
 
 *.exe
 *.test
+
+
+# List of names to ignore, this is unique for each person running it
+ignore-names
