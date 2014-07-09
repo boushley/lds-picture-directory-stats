@@ -8,6 +8,7 @@ type Specifics struct {
 	EmailLevel string `json:"emailLevel"`
 	Phone      string `json:"phone"`
 	PhoneLevel string `json:"phoneLevel"`
+	Id         int    `json:"individualId"`
 }
 
 func (s Specifics) addEmail(emails string) (result string) {
@@ -16,6 +17,8 @@ func (s Specifics) addEmail(emails string) (result string) {
 			result = emails + ", "
 		}
 		result += s.Email
+	} else {
+		result = emails
 	}
 	return
 }
