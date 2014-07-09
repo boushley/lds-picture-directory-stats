@@ -75,7 +75,7 @@ func main() {
 		}
 	}
 
-	fmt.Printf("Checked: %d Found: %d Skipped: %d\n", checked, found, skipped)
+	fmt.Printf("Missing: %d Checked: %d Found: %d Skipped: %d\n", (checked - found), checked, found, skipped)
 }
 
 func readValue(prompt string) (result string) {
